@@ -1,7 +1,6 @@
 import { Colors } from "../Colors"
 import logo from '../../assets/black-king.png'
 import { Cell } from "../Cell";
-import { threadId } from "worker_threads";
 
 export enum FigureNames{
    FIGURE = "Фигура",
@@ -30,6 +29,12 @@ export class Figure {
   }
 
   canMove(target: Cell) : boolean {
+    if(target.figure?.color === this.color){
+      return false;
+    };
+    if(target.figure?.name === FigureNames.KING){
+      return false;
+    };
     return true;
   }
   
